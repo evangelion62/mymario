@@ -9,7 +9,6 @@ int main(int argc, char *argv[])
     // Variables
 
     SDL_Window *window;
-    SDL_Renderer *renderer;
     SDL_Event event;
     SDL_Surface *spriteMario = NULL;
     bool end = false;
@@ -25,35 +24,6 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-
-    // Renderer
-
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-
-    if(!renderer)
-    {
-        std::cout << "SDL Error : " << SDL_GetError() << std::endl;
-        return -1;
-    }
-
-    //surfaces loading
-    spriteMario=SDL_LoadBMP("sprite/mario/spritemario.bmp");
-    SDL_SetColorKey(spriteMario,SDL_TRUE,SDL_MapRGB(spriteMario->format,129,129,129));
-
-    if (spriteMario){
-            SDL_Rect dest = { 0,0,0,0 };
-            SDL_BlitSurface (spriteMario,NULL,SDL_GetWindowSurface(window),&dest);
-
-            SDL_UpdateWindowSurface(window);
-            SDL_Delay(3000);
-
-            SDL_FreeSurface(spriteMario);
-
-    }else{
-        std::cout << "SDL Error : " << SDL_GetError() << std::endl;
-        return -1;
-    }
-
     // Event loop
 
     while(!end)
@@ -64,12 +34,36 @@ int main(int argc, char *argv[])
             end = true;
 
 
-        // Drawing
+        //surfaces loading
+        spriteMario=SDL_LoadBMP("sprite/mario/spritemario.bmp");
 
-        SDL_SetRenderDrawColor(renderer, 0x00, 0xAA, 0xAA, 0xFF);
-        SDL_RenderClear(renderer);
+        if (spriteMario){
+            int frameRate = 50;
+            int spriteWidth = 62;
+            int spriteHeight = 98;
+            int startposition = 145;
+            int cmpt = 0;
 
-        SDL_RenderPresent(renderer);
+            while (cmpt < 4){
+                //blit sprite
+                SDL_Rect dest = { 10,10,0,0 };
+                SDL_Rect srcrect = {startposition,0,spriteWidth,spriteHeight};
+                SDL_BlitSurface (spriteMario,&srcrect,SDL_GetWindowSurface(window),&dest);
+
+                SDL_UpdateWindowSurface(window);
+                SDL_Delay(frameRate);
+
+                cmpt++;
+                startposition += spriteWidth;
+
+            }
+
+            SDL_FreeSurface(spriteMario);
+
+        }else{
+            std::cout << "SDL Error : " << SDL_GetError() << std::endl;
+            return -1;
+        }
     }
 
     return 0;
