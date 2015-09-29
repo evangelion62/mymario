@@ -37,7 +37,21 @@ int main(int argc, char *argv[])
     }
 
     //surfaces loading
-    spriteMario=SDL_LoadBMP("../../sprite/mario/spritemario.bmp");
+    spriteMario=SDL_LoadBMP("sprite/mario/spritemario.bmp");
+
+    if (spriteMario){
+            SDL_Rect dest = { 0,0,0,0 };
+            SDL_BlitSurface (spriteMario,NULL,SDL_GetWindowSurface(window),&dest);
+
+            SDL_UpdateWindowSurface(window);
+            SDL_Delay(3000);
+
+            SDL_FreeSurface(spriteMario);
+
+    }else{
+        std::cout << "SDL Error : " << SDL_GetError() << std::endl;
+        return -1;
+    }
 
     // Event loop
 
