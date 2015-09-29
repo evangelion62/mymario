@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
 
     //surfaces loading
     spriteMario=SDL_LoadBMP("sprite/mario/spritemario.bmp");
+    SDL_SetColorKey(spriteMario,SDL_TRUE,SDL_MapRGB(spriteMario->format,129,129,129));
 
     if (spriteMario){
             SDL_Rect dest = { 0,0,0,0 };
