@@ -11,6 +11,7 @@ int main(int argc, char *argv[])
     SDL_Window *window;
     SDL_Renderer *renderer;
     SDL_Event event;
+    SDL_Surface *spriteMario = NULL;
     bool end = false;
 
 
@@ -35,6 +36,8 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    //surfaces loading
+    spriteMario=SDL_LoadBMP("../../sprite/mario/spritemario.bmp");
 
     // Event loop
 
