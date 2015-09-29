@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 
     // Renderer
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     if(!renderer)
     {
