@@ -38,10 +38,10 @@ int main(int argc, char *argv[])
         spriteMario=SDL_LoadBMP("sprite/mario/spritemario.bmp");
 
         if (spriteMario){
-            int frameRate = 50;
-            int spriteWidth = 62;
+            int frameRate = 100;
+            int spriteWidth = 64;
             int spriteHeight = 98;
-            int startposition = 145;
+            int startposition = 140;
             int cmpt = 0;
 
             while (cmpt < 4){
@@ -65,6 +65,7 @@ int main(int argc, char *argv[])
             return -1;
         }
     }
+
 
     return 0;
 }
