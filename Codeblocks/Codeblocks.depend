@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1443529801 source:c:\users\admin\desktop\mymario\codeblocks\main.cpp
+1443797739 source:c:\users\admin\desktop\mymario\codeblocks\main.cpp
 	<SDL2/SDL.h>
+	"animation.h"
 	<iostream>
 
 1394940796 c:\program files (x86)\codeblocks\mingw\sdl2-2.0.3\i686-w64-mingw32\include\sdl2\sdl.h
@@ -319,4 +320,12 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1443794545 c:\users\admin\desktop\mymario\codeblocks\include\animation.h
+	<SDL2/SDL.h>
+	<iostream>
+	"animation.h"
+
+1443797830 source:c:\users\admin\desktop\mymario\codeblocks\src\animation.cpp
+	"animation.h"
 
